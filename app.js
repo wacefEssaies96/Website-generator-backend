@@ -13,9 +13,10 @@ const authRoute = require("./routes/AuthRouter");
 var app = express();
 
 app.use(cors({
-    origin:"http://localhost:3000",
-    methods:["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type"]
+  origin: 'http://localhost:3000',
+  methods: 'GET, POST, PUT, DELETE',
+  allowedHeaders: 'Origin, X-Requested-With, Content-Type, Accept, Authorization, Credentials',
+  credentials: true
 }));
 app.enable('trust proxy');
 app.use(logger('dev'));
@@ -45,6 +46,7 @@ app.use(function (req, res, next) {
 
 // error handler
 app.use(function (err, req, res, next) {
+  console.log(err)
   res.status(500).send({ error: err });
 });
 

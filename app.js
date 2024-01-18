@@ -5,12 +5,10 @@ var cookieParser = require('cookie-parser');
 var logger = require('morgan');
 var http = require('http');
 require('dotenv').config();
-
 var mongoose = require('mongoose');
 var cors = require('cors');
 
-// sport meets routes
-const menuRouter = require("./routes/menuRouter")
+const authRoute = require("./routes/AuthRouter");
 
 var app = express();
 
@@ -26,8 +24,7 @@ app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'uploads')));
 
-//Routes
-app.use('/menu', menuRouter)
+app.use("/", authRoute);
 
 //connect to mongo database
 mongoose.set('strictQuery', true);

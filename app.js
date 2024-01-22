@@ -9,6 +9,7 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 
 const authRoute = require("./routes/AuthRouter");
+const otherAppsRoute = require("./routes/OtherAppsAuth")
 
 var app = express();
 
@@ -26,6 +27,7 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use("/", authRoute);
+app.use("/", otherAppsRoute);
 
 //connect to mongo database
 mongoose.set('strictQuery', true);

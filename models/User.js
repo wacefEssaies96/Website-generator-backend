@@ -21,7 +21,8 @@ const userSchema = new mongoose.Schema({
   },
   googleId: String,
   secret: String,
-  role: String
+  role: String,
+  reset_token : String
 });
 
 userSchema.pre("save", async function () {

@@ -9,8 +9,9 @@ var mongoose = require('mongoose');
 var cors = require('cors');
 
 const authRoute = require("./routes/AuthRouter");
-const otherAppsRoute = require("./routes/OtherAppsAuth")
-
+const otherAppsRoute = require("./routes/OtherAppsAuth");
+// const resetPassword = require('./routes/ResetPassword');
+const resetPassword = require("./routes/ResetPassword")
 var app = express();
 
 app.use(cors({
@@ -28,6 +29,7 @@ app.use(express.static(path.join(__dirname, 'uploads')));
 
 app.use("/", authRoute);
 app.use("/", otherAppsRoute);
+app.use("/", resetPassword);
 
 //connect to mongo database
 mongoose.set('strictQuery', true);
